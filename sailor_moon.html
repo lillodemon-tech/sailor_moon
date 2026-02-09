@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sailor Moon ✨ Per Te</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3em;
+            text-shadow: 0 0 20px rgba(255, 182, 193, 0.8),
+                         0 0 40px rgba(255, 182, 193, 0.6);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #ffe4e1;
+            font-size: 1.3em;
+            font-style: italic;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h2 {
+            color: #d946a6;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .senshi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .senshi-card {
+            background: linear-gradient(135deg, #ffeef8 0%, #fff0f5 100%);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .senshi-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(217, 70, 166, 0.4);
+            border-color: #d946a6;
+        }
+
+        .senshi-card h3 {
+            color: #d946a6;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .senshi-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #ffafcc 0%, #ffc8dd 100%);
+            border-left: 5px solid #d946a6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #5a1845;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .moon-symbol {
+            font-size: 4em;
+            text-align: center;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .love-message {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+            border: 3px solid #d946a6;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 0 30px rgba(217, 70, 166, 0.3);
+        }
+
+        .love-message p {
+            color: #5a1845;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .heart {
+            display: inline-block;
+            color: #ff69b4;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .transformation-btn {
+            background: linear-gradient(135deg, #d946a6 0%, #ff69b4 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 5px 20px rgba(217, 70, 166, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .transformation-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(217, 70, 166, 0.6);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .senshi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <h1>✨ Sailor Moon ✨</h1>
+            <p class="subtitle">Nel nome della luna, ti punirò!</p>
+        </header>
+
+        <div class="card">
+            <div class="moon-symbol">🌙</div>
+            <h2>Le Guerriere Sailor</h2>
+            
+            <div class="senshi-grid">
+                <div class="senshi-card">
+                    <h3>🌙 Sailor Moon</h3>
+                    <p><strong>Usagi Tsukino</strong> - La nostra eroina dal cuore d'oro. Un po' pasticciona ma sempre pronta a proteggere chi ama con il potere della luna.</p>
+                </div>
+                
+                <div class="senshi-card">
+                    <h3>💧 Sailor Mercury</h3>
+                    <p><strong>Ami Mizuno</strong> - La guerriera dell'acqua e della saggezza. Intelligente e razionale, è il cervello del gruppo.</p>
+                </div>
+                
+                <div class="senshi-card">
+                    <h3>🔥 Sailor Mars</h3>
+                    <p><strong>Rei Hino</strong> - La sacerdotessa del fuoco. Forte e determinata, con poteri spirituali straordinari.</p>
+                </div>
+                
+                <div class="senshi-card">
+                    <h3>⚡ Sailor Jupiter</h3>
+                    <p><strong>Makoto Kino</strong> - La guerriera del tuono. Dolce ma potente, combina forza e femminilità.</p>
+                </div>
+                
+                <div class="senshi-card">
+                    <h3>💛 Sailor Venus</h3>
+                    <p><strong>Minako Aino</strong> - La guerriera dell'amore. Energica e carismatica, è stata la prima Sailor a risvegliarsi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Le Frasi Iconiche</h2>
+            <div class="quote-box">
+                "Nel nome della Luna, ti punirò!"
+            </div>
+            <div class="quote-box">
+                "Il potere dell'amore vince sempre sul male!"
+            </div>
+            <div class="quote-box">
+                "Combatti per l'amore e la giustizia, guerriera Sailor!"
+            </div>
+        </div>
+
+        <button class="transformation-btn" onclick="showLoveMessage()">
+            💫 Trasformazione Magica! 💫
+        </button>
+
+        <div class="love-message hidden" id="loveMessage">
+            <h2>✨ Per la mia Guerriera Sailor ✨</h2>
+            <div class="moon-symbol">🌙💖🌙</div>
+            <p>
+                Come Sailor Moon combatte per l'amore e la giustizia, 
+                tu illumini la mia vita con la tua presenza. <span class="heart">❤️</span>
+            </p>
+            <p>
+                Sei la mia luna che brilla nel buio, 
+                la mia stella che guida il mio cammino. <span class="heart">✨</span>
+            </p>
+            <p>
+                Con tutto il mio amore, <span class="heart">💕</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Crea le stelle animate
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 100;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Mostra il messaggio d'amore
+        function showLoveMessage() {
+            const message = document.getElementById('loveMessage');
+            message.classList.remove('hidden');
+            message.scrollIntoView({ behavior: 'smooth' });
+            
+            // Aggiungi un effetto sparkle
+            createSparkles();
+        }
+
+        // Crea effetto scintille
+        function createSparkles() {
+            const sparkles = ['✨', '💖', '🌟', '💫', '⭐'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    sparkle.style.fontSize = '2em';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '1000';
+                    sparkle.style.animation = 'fadeOut 2s ease forwards';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        // Aggiungi animazione CSS per le scintille
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                0% { opacity: 1; transform: translateY(0) scale(1); }
+                100% { opacity: 0; transform: translateY(-100px) scale(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Inizializza le stelle quando la pagina si carica
+        window.addEventListener('load', createStars);
+
+        // Effetto interattivo sulle carte delle Sailor
+        document.querySelectorAll('.senshi-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = 'fadeInUp 0.5s ease';
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>
