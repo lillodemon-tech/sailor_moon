@@ -582,17 +582,19 @@
         </section>
 
         <!-- Music Player -->
-        <section>
-            <h2>Colonna Sonora</h2>
-            <div class="music-player">
-                <h3>🎵 Moonlight Densetsu 🎵</h3>
-                <p>La mitica sigla di apertura!</p>
-                <div class="music-controls">
-                    <button class="music-btn" onclick="playMusic()">▶️ Play</button>
-                    <button class="music-btn" onclick="pauseMusic()">⏸️ Pausa</button>
-                </div>
-            </div>
-        </section>
+<section>
+    <h2>Colonna Sonora</h2>
+    <div class="music-player">
+        <h3>🎵 Moonlight Densetsu 🎵</h3>
+        <p>La mitica sigla di apertura!</p>
+        
+        <!-- Audio con controlli nativi -->
+        <audio controls loop>
+            <source src="SIGLA ITALIANA SAILOR MOON CRYSTAL.mp3" type="audio/mpeg">
+            Il tuo browser non supporta l'audio.
+        </audio>
+    </div>
+</section>
 
         <!-- Messaggio d'Amore -->
         <section id="messaggio">
