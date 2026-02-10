@@ -3,691 +3,755 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sailor Moon - La Guerriera della Giustizia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>✨ Sailor Moon - Il Potere della Luna ✨</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --moon-blue: #2a4b8d;
-            --moon-pink: #f6a4c1;
-            --moon-yellow: #ffd700;
-            --moon-red: #e5395a;
-            --moon-purple: #9c27b0;
-            --dark-bg: #0d1b3e;
-            --light-bg: #f8f0f5;
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: white;
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(42, 75, 141, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(246, 164, 193, 0.1) 0%, transparent 20%);
-            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header e Menu */
-        header {
-            background: linear-gradient(135deg, var(--moon-blue), var(--moon-purple));
-            padding: 20px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo img {
-            height: 60px;
-            filter: drop-shadow(0 0 5px var(--moon-yellow));
-        }
-
-        .logo-text {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--moon-yellow), var(--moon-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 25px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 8px 15px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        nav ul li a.active {
-            background-color: var(--moon-red);
-            box-shadow: 0 0 10px var(--moon-red);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            background: radial-gradient(ellipse at center, rgba(42, 75, 141, 0.4) 0%, rgba(13, 27, 62, 0.8) 70%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--moon-yellow), var(--moon-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--moon-red), var(--moon-purple));
-            color: white;
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(229, 57, 90, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(229, 57, 90, 0.6);
-        }
-
-        /* Sezioni principali */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: var(--moon-yellow);
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, var(--moon-blue), var(--moon-pink));
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        /* Sezione personaggi */
-        .characters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .character-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .character-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: var(--moon-pink);
-        }
-
-        .character-img {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .character-info {
-            padding: 20px;
-        }
-
-        .character-info h3 {
-            color: var(--moon-yellow);
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-
-        .character-info p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
-
-        /* Sezione poteri */
-        .powers {
-            background-color: rgba(13, 27, 62, 0.7);
-        }
-
-        .powers-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .power-item {
-            background: linear-gradient(135deg, rgba(42, 75, 141, 0.3), rgba(156, 39, 176, 0.3));
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 5px solid var(--moon-yellow);
-        }
-
-        .power-item h3 {
-            color: var(--moon-pink);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Galleria */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-
-        .gallery-item {
-            height: 200px;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
+        /* Stelle animate nello sfondo */
+        .stars {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(42, 75, 141, 0.7);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
+            50% { text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.8); }
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Container principale */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sezioni */
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section h2 {
+            color: #f5576c;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '✨';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+
+        /* Griglia personaggi */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .character-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .character-card h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-card .emoji {
+            font-size: 4rem;
+            margin: 1rem 0;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
+        .gallery-item:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Quiz */
+        .quiz-container {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+        }
+
+        .question {
+            font-size: 1.3rem;
+            color: #764ba2;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .option:hover {
+            background: #f093fb;
+            color: white;
+            border-color: #764ba2;
+            transform: translateX(10px);
+        }
+
+        .quiz-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #f093fb, #f5576c);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Love Message */
+        .love-message {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 2rem;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.05); }
+            20% { transform: scale(1); }
+        }
+
+        .love-message h3 {
+            color: #764ba2;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .love-message p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Music Player */
+        .music-player {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .music-btn {
+            background: white;
+            color: #764ba2;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.3);
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--moon-blue), var(--dark-bg));
-            padding: 50px 0 20px;
-            margin-top: 50px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            color: var(--moon-yellow);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .footer-column p, .footer-column a {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 10px;
-            display: block;
-            text-decoration: none;
-        }
-
-        .footer-column a:hover {
-            color: var(--moon-pink);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            background: var(--moon-pink);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            animation: modalPop 0.3s;
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            background: #f5576c;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .close-modal:hover {
+            background: #764ba2;
         }
 
         /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .mobile-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                height: 100vh;
-                background: var(--dark-bg);
-                z-index: 1100;
-                padding: 80px 30px 30px;
-                transition: right 0.5s ease;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-            }
-
-            .mobile-menu.active {
-                right: 0;
-            }
-
-            .mobile-menu ul {
-                list-style: none;
-            }
-
-            .mobile-menu ul li {
-                margin-bottom: 20px;
-            }
-
-            .mobile-menu ul li a {
-                color: white;
-                font-size: 1.3rem;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                padding: 10px 0;
-            }
-
-            .close-menu {
-                position: absolute;
-                top: 25px;
-                right: 25px;
-                font-size: 1.8rem;
-                color: white;
-                cursor: pointer;
-            }
-        }
-
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .character-card {
-                margin-bottom: 20px;
-            }
+            header h1 { font-size: 2rem; }
+            nav ul { flex-direction: column; gap: 0.5rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; margin-left: 40px !important; }
         }
     </style>
 </head>
 <body>
-    <!-- Header con Menu -->
+    <!-- Stelle animate -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
     <header>
-        <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon">🌙</div>
-                <div class="logo-text">Sailor Moon</div>
-            </div>
-            
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            
-            <nav class="desktop-menu">
-                <ul>
-                    <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#characters"><i class="fas fa-user-astronaut"></i> Personaggi</a></li>
-                    <li><a href="#powers"><i class="fas fa-magic"></i> Poteri</a></li>
-                    <li><a href="#gallery"><i class="fas fa-images"></i> Galleria</a></li>
-                    <li><a href="#about"><i class="fas fa-moon"></i> Storia</a></li>
-                </ul>
-            </nav>
-            
-            <!-- Menu Mobile -->
-            <div class="mobile-menu" id="mobileMenu">
-                <div class="close-menu" id="closeMenu">
-                    <i class="fas fa-times"></i>
-                </div>
-                <ul>
-                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#characters"><i class="fas fa-user-astronaut"></i> Personaggi</a></li>
-                    <li><a href="#powers"><i class="fas fa-magic"></i> Poteri</a></li>
-                    <li><a href="#gallery"><i class="fas fa-images"></i> Galleria</a></li>
-                    <li><a href="#about"><i class="fas fa-moon"></i> Storia</a></li>
-                </ul>
-            </div>
-        </div>
+        <h1>🌙 Sailor Moon 🌙</h1>
+        <p>Nel nome della Luna, ti punirò!</p>
     </header>
 
-    <!-- Sezione Hero -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Sailor Moon - La Guerriera della Giustizia</h1>
-            <p>Tsukino Usagi, una normale studentessa delle medie, scopre di essere la reincarnazione di una principessa lunare e diventa Sailor Moon, la guerriera che combatte per l'amore e la giustizia.</p>
-            <a href="#about" class="cta-button">Scopri la Storia <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </section>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#personaggi">Personaggi</a></li>
+            <li><a href="#storia">Storia</a></li>
+            <li><a href="#episodi">Episodi</a></li>
+            <li><a href="#galleria">Galleria</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#messaggio">Messaggio</a></li>
+        </ul>
+    </nav>
 
-    <!-- Sezione Personaggi -->
-    <section class="section" id="characters">
-        <div class="container">
-            <h2 class="section-title">I Personaggi Principali</h2>
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home">
+            <h2>Benvenuta nel Mondo di Sailor Moon</h2>
+            <p style="text-align: center; font-size: 1.2rem; line-height: 1.8;">
+                Sailor Moon è una serie manga scritta e illustrata da Naoko Takeuchi che ha conquistato il cuore di milioni di fan in tutto il mondo. 
+                La storia segue le avventure di Usagi Tsukino, una ragazza di 14 anni che scopre di essere la reincarnazione della principessa della Luna 
+                e deve proteggere la Terra dalle forze del male insieme alle sue amiche Sailor Senshi.
+            </p>
+            <div style="text-align: center; font-size: 5rem; margin: 2rem 0;">
+                🌙✨💖🌟⭐
+            </div>
+        </section>
+
+        <!-- Personaggi -->
+        <section id="personaggi">
+            <h2>Le Guerriere Sailor</h2>
             <div class="characters-grid">
-                <div class="character-card">
-                    <div class="character-img" style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
-                    <div class="character-info">
-                        <h3>Sailor Moon</h3>
-                        <p>Tsukino Usagi, principessa della Luna e leader delle Sailor Senshi. Usa il potere dell'amore e della luna per combattere il male.</p>
+                <div class="character-card" onclick="showCharacterInfo('Sailor Moon')">
+                    <div class="emoji">🌙</div>
+                    <h3>Sailor Moon</h3>
+                    <p><strong>Usagi Tsukino</strong></p>
+                    <p>La protagonista, guerriera dell'amore e della giustizia!</p>
+                </div>
+                <div class="character-card" onclick="showCharacterInfo('Sailor Mercury')">
+                    <div class="emoji">💧</div>
+                    <h3>Sailor Mercury</h3>
+                    <p><strong>Ami Mizuno</strong></p>
+                    <p>La guerriera dell'acqua e della saggezza</p>
+                </div>
+                <div class="character-card" onclick="showCharacterInfo('Sailor Mars')">
+                    <div class="emoji">🔥</div>
+                    <h3>Sailor Mars</h3>
+                    <p><strong>Rei Hino</strong></p>
+                    <p>La guerriera del fuoco e della passione</p>
+                </div>
+                <div class="character-card" onclick="showCharacterInfo('Sailor Jupiter')">
+                    <div class="emoji">⚡</div>
+                    <h3>Sailor Jupiter</h3>
+                    <p><strong>Makoto Kino</strong></p>
+                    <p>La guerriera del tuono e del coraggio</p>
+                </div>
+                <div class="character-card" onclick="showCharacterInfo('Sailor Venus')">
+                    <div class="emoji">💛</div>
+                    <h3>Sailor Venus</h3>
+                    <p><strong>Minako Aino</strong></p>
+                    <p>La guerriera dell'amore e della bellezza</p>
+                </div>
+                <div class="character-card" onclick="showCharacterInfo('Tuxedo Mask')">
+                    <div class="emoji">🎩</div>
+                    <h3>Tuxedo Mask</h3>
+                    <p><strong>Mamoru Chiba</strong></p>
+                    <p>Il misterioso cavaliere che protegge Sailor Moon</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Storia -->
+        <section id="storia">
+            <h2>La Storia</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>🌙 L'Inizio</h3>
+                        <p>Usagi incontra Luna, un gatto parlante che le dona un medaglione magico e le rivela il suo destino come Sailor Moon.</p>
                     </div>
                 </div>
-                
-                <div class="character-card">
-                    <div class="character-img" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
-                    <div class="character-info">
-                        <h3>Sailor Mercury</h3>
-                        <p>Mizuno Ami, la più intelligente del gruppo. Usa il potere dell'acqua e del ghiaccio, oltre alle sue capacità analitiche.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>👯‍♀️ Le Compagne</h3>
+                        <p>Usagi incontra le altre Sailor Senshi: Mercury, Mars, Jupiter e Venus, formando un team imbattibile.</p>
                     </div>
                 </div>
-                
-                <div class="character-card">
-                    <div class="character-img" style="background-image: url('https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
-                    <div class="character-info">
-                        <h3>Sailor Mars</h3>
-                        <p>Hino Rei, una sacerdotessa miko con poteri spirituali. Usa il potere del fuoco e può eseguire esorcismi.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>💖 L'Amore</h3>
+                        <p>Scopre che Tuxedo Mask è Mamoru Chiba e che erano destinati ad amarsi sin dai tempi del Regno Lunare.</p>
                     </div>
                 </div>
-                
-                <div class="character-card">
-                    <div class="character-img" style="background-image: url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
-                    <div class="character-info">
-                        <h3>Sailor Jupiter</h3>
-                        <p>Kino Makoto, la più forte fisicamente. Usa il potere del fulmine e della natura, ed è un'ottima cuoca.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>👑 La Principessa</h3>
+                        <p>Usagi scopre di essere la reincarnazione della Principessa Serenity del Regno della Luna.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>⭐ Il Cristallo d'Argento</h3>
+                        <p>Il leggendario Cristallo d'Argento si manifesta, donando a Sailor Moon poteri straordinari.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Sezione Poteri -->
-    <section class="section powers" id="powers">
-        <div class="container">
-            <h2 class="section-title">I Poteri delle Sailor Senshi</h2>
-            <div class="powers-container">
-                <div class="power-item">
-                    <h3><i class="fas fa-moon"></i> Potere Lunare</h3>
-                    <p>Sailor Moon trae il suo potere dalla Luna, che le conferisce abilità di guarigione, purificazione e attacchi basati sulla luce lunare.</p>
+        <!-- Episodi Memorabili -->
+        <section id="episodi">
+            <h2>Episodi Memorabili</h2>
+            <div style="display: grid; gap: 1rem; margin-top: 1rem;">
+                <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: #764ba2;">🌟 Episodio 1 - "Una guerriera nata piangendo"</h3>
+                    <p>Usagi scopre i suoi poteri e diventa Sailor Moon per la prima volta!</p>
                 </div>
-                
-                <div class="power-item">
-                    <h3><i class="fas fa-tint"></i> Potere dell'Acqua</h3>
-                    <p>Sailor Mercury controlla l'acqua e il ghiaccio, oltre ad avere abilità analitiche che le permettono di analizzare gli avversari.</p>
+                <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: #764ba2;">💕 Episodio 34 - "Il bacio di Usagi e Mamoru"</h3>
+                    <p>Il momento romantico più atteso della serie!</p>
                 </div>
-                
-                <div class="power-item">
-                    <h3><i class="fas fa-fire"></i> Potere del Fuoco</h3>
-                    <p>Sailor Mars utilizza il fuoco sacro e possiede abilità spirituali che le permettono di percepire il male e eseguire esorcismi.</p>
-                </div>
-                
-                <div class="power-item">
-                    <h3><i class="fas fa-bolt"></i> Potere del Fulmine</h3>
-                    <p>Sailor Jupiter controlla il fulmine e le piante, combinando forza fisica impressionante con attacchi elettrici devastanti.</p>
+                <div style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); padding: 1.5rem; border-radius: 10px;">
+                    <h3 style="color: #764ba2;">👑 Episodio 44 - "Usagi si sveglia"</h3>
+                    <p>La rivelazione della vera identità di Sailor Moon!</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Sezione Galleria -->
-    <section class="section" id="gallery">
-        <div class="container">
-            <h2 class="section-title">Galleria Immagini</h2>
+        <!-- Galleria -->
+        <section id="galleria">
+            <h2>Galleria Magica</h2>
             <div class="gallery">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sailor Moon Transformation">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
+                <div class="gallery-item">🌙</div>
+                <div class="gallery-item">⭐</div>
+                <div class="gallery-item">💖</div>
+                <div class="gallery-item">✨</div>
+                <div class="gallery-item">🌟</div>
+                <div class="gallery-item">💫</div>
+                <div class="gallery-item">🌸</div>
+                <div class="gallery-item">🎀</div>
+            </div>
+        </section>
+
+        <!-- Quiz -->
+        <section id="quiz">
+            <h2>Quiz: Quale Sailor Senshi Sei?</h2>
+            <div class="quiz-container">
+                <div class="question">Quale qualità ti rappresenta di più?</div>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer('moon')">💖 Gentilezza e compassione</div>
+                    <div class="option" onclick="selectAnswer('mercury')">📚 Intelligenza e saggezza</div>
+                    <div class="option" onclick="selectAnswer('mars')">🔥 Passione e determinazione</div>
+                    <div class="option" onclick="selectAnswer('jupiter')">💪 Forza e coraggio</div>
+                    <div class="option" onclick="selectAnswer('venus')">✨ Bellezza e amore</div>
                 </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sailor Senshi Group">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Moon Castle">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Crystal Tokyo">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus fa-2x"></i>
-                    </div>
+                <div class="quiz-result" id="quizResult"></div>
+            </div>
+        </section>
+
+        <!-- Music Player -->
+        <section>
+            <h2>Colonna Sonora</h2>
+            <div class="music-player">
+                <h3>🎵 Moonlight Densetsu 🎵</h3>
+                <p>La mitica sigla di apertura!</p>
+                <div class="music-controls">
+                    <button class="music-btn" onclick="playMusic()">▶️ Play</button>
+                    <button class="music-btn" onclick="pauseMusic()">⏸️ Pausa</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Messaggio d'Amore -->
+        <section id="messaggio">
+            <h2>Un Messaggio Speciale</h2>
+            <div class="love-message">
+                <h3>💖 Per Te 💖</h3>
+                <p>
+                    Come Sailor Moon combatte per l'amore e la giustizia, così io voglio essere al tuo fianco 
+                    in ogni avventura della vita. Come la Luna illumina la notte, tu illumini le mie giornate 
+                    con il tuo sorriso. Questo sito è dedicato a te, alla tua passione per Sailor Moon, 
+                    e a tutto ciò che ci rende speciali insieme.
+                </p>
+                <p style="margin-top: 1rem; font-weight: bold;">
+                    Nel nome della Luna... Ti amo! 🌙✨
+                </p>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
-    <footer id="about">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Sailor Moon</h3>
-                    <p>La storia di Sailor Moon è un manga shōjo creato da Naoko Takeuchi. Racconta le avventure di Usagi Tsukino e delle altre Sailor Senshi che combattono per proteggere la Terra dalle forze del male.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Link Utili</h3>
-                    <a href="#home">Home</a>
-                    <a href="#characters">Personaggi</a>
-                    <a href="#powers">Poteri</a>
-                    <a href="#gallery">Galleria</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contatti</h3>
-                    <p><i class="fas fa-envelope"></i> info@sailormoon.com</p>
-                    <p><i class="fas fa-phone"></i> +39 123 456 7890</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Tokyo, Giappone</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Sailor Moon Fan Page. Tutti i diritti riservati. Sailor Moon è un marchio di Naoko Takeuchi/Kodansha.</p>
-            </div>
-        </div>
+    <footer>
+        <p>🌙 Creato con amore per la mia Sailor Senshi preferita 💖</p>
+        <p style="margin-top: 0.5rem;">© 2024 - Sailor Moon Forever ✨</p>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal" id="characterModal">
+        <div class="modal-content">
+            <h2 id="modalTitle"></h2>
+            <p id="modalText"></p>
+            <button class="close-modal" onclick="closeModal()">Chiudi</button>
+        </div>
+    </div>
+
     <script>
-        // Menu mobile
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
-        
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
-        
-        // Chiudi il menu mobile cliccando su un link
-        const mobileLinks = document.querySelectorAll('.mobile-menu a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling per i link interni
+        // Crea stelle animate
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Mostra info personaggio
+        function showCharacterInfo(character) {
+            const modal = document.getElementById('characterModal');
+            const title = document.getElementById('modalTitle');
+            const text = document.getElementById('modalText');
+            
+            const info = {
+                'Sailor Moon': '🌙 Usagi Tsukino è la protagonista della serie. Inizialmente è una ragazza piagnucolosa e pigra, ma si trasforma in una coraggiosa guerriera quando i suoi cari sono in pericolo. Il suo attacco speciale è "Punizione Lunare"!',
+                'Sailor Mercury': '💧 Ami Mizuno è la più intelligente del gruppo. Ama studiare ed è sempre la prima della classe. Come Sailor Mercury, usa il potere dell\'acqua per combattere. Il suo attacco è "Acqua Rapsodica di Mercurio"!',
+                'Sailor Mars': '🔥 Rei Hino è una sacerdotessa con poteri spirituali. È seria e determinata, spesso in contrasto con Usagi. Come Sailor Mars usa il potere del fuoco con il suo "Burning Mandala"!',
+                'Sailor Jupiter': '⚡ Makoto Kino è la più forte fisicamente. Ama cucinare e prendersi cura degli altri. Come Sailor Jupiter controlla il fulmine con il suo "Supreme Thunder"!',
+                'Sailor Venus': '💛 Minako Aino era Sailor V prima di unirsi al gruppo. È la leader nata delle Sailor Senshi ed è molto simile a Usagi. Il suo attacco è "Catena d\'Amore di Venere"!',
+                'Tuxedo Mask': '🎩 Mamoru Chiba è il misterioso Tuxedo Mask. Protegge Sailor Moon lanciando rose e fornendo supporto nei momenti critici. È la reincarnazione del Principe Endymion!'
+            };
+            
+            title.textContent = character;
+            text.textContent = info[character];
+            modal.style.display = 'flex';
+        }
+
+        // Chiudi modal
+        function closeModal() {
+            document.getElementById('characterModal').style.display = 'none';
+        }
+
+        // Quiz
+        function selectAnswer(senshi) {
+            const results = {
+                'moon': '🌙 Sei Sailor Moon! Sei gentile, compassionevole e credi nell\'amore come forza più potente dell\'universo!',
+                'mercury': '💧 Sei Sailor Mercury! Sei intelligente, studiosa e risolvi i problemi con la mente prima che con la forza!',
+                'mars': '🔥 Sei Sailor Mars! Sei passionale, determinata e non ti arrendi mai davanti alle difficoltà!',
+                'jupiter': '⚡ Sei Sailor Jupiter! Sei forte, coraggiosa e proteggi sempre chi ami!',
+                'venus': '✨ Sei Sailor Venus! Sei bella, carismatica e porti amore ovunque vai!'
+            };
+            
+            const result = document.getElementById('quizResult');
+            result.textContent = results[senshi];
+            result.style.display = 'block';
+            
+            // Effetto confetti
+            createConfetti();
+        }
+
+        // Confetti
+        function createConfetti() {
+            const colors = ['#f093fb', '#f5576c', '#667eea', '#764ba2', '#ffecd2'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-10px';
+                confetti.style.zIndex = '9999';
+                confetti.style.borderRadius = '50%';
+                document.body.appendChild(confetti);
+                
+                const fall = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight + 10}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                fall.onfinish = () => confetti.remove();
+            }
+        }
+
+        // Music player (simulato)
+        let isPlaying = false;
+        function playMusic() {
+            if (!isPlaying) {
+                alert('🎵 "Gomenasai sunao ja nakute, yume no naka nara ieru..." 🎵\n\nLa musica di Sailor Moon riempie il tuo cuore! 💖');
+                isPlaying = true;
+            }
+        }
+
+        function pauseMusic() {
+            if (isPlaying) {
+                alert('⏸️ Musica in pausa');
+                isPlaying = false;
+            }
+        }
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-        
-        // Cambia menu attivo durante lo scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav ul li a');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if(scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
+
+        // Inizializza
+        createStars();
+
+        // Easter egg: click sulla luna
+        let clickCount = 0;
+        document.querySelector('header h1').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 5) {
+                alert('🌙✨ MOON PRISM POWER, MAKE UP! ✨🌙');
+                createConfetti();
+                clickCount = 0;
+            }
         });
     </script>
 </body>
