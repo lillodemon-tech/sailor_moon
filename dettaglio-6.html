@@ -1,1 +1,524 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎩 Tuxedo Mask - Mamoru Chiba</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+            background-attachment: fixed;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Rose animate nello sfondo */
+        .roses {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .rose {
+            position: absolute;
+            color: #dc143c;
+            opacity: 0.6;
+            animation: fall-rose 12s infinite;
+        }
+
+        @keyframes fall-rose {
+            0% { 
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateY(calc(100vh + 100px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header fisso */
+        .page-header {
+            background: linear-gradient(135deg, #141e30 0%, #000000 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 4px solid #dc143c;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            background: rgba(220, 20, 60, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 2px solid #dc143c;
+        }
+
+        .back-link:hover {
+            background: rgba(220, 20, 60, 0.5);
+            transform: translateX(-5px);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* Container principale */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #dc143c;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .character-emoji {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-section h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 4rem;
+            color: #141e30;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .character-subtitle {
+            font-size: 2rem;
+            color: #dc143c;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Content wrapper */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Citazione */
+        .quote-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        .quote-section::before {
+            content: '"';
+            font-size: 10rem;
+            color: #141e30;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 2rem;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sezioni contenuto */
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 0;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .content-section:nth-child(even) {
+            background: rgba(245, 245, 245, 0.95);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section h2 {
+            color: #141e30;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, #141e30, #dc143c);
+        }
+
+        .content-section p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Info boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #141e30;
+            transition: all 0.3s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(20, 30, 48, 0.4);
+        }
+
+        .info-box h3 {
+            color: #141e30;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Timeline section */
+        .timeline-section {
+            background: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .timeline-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-section h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .timeline-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-section li {
+            color: white;
+            padding: 1.2rem 0;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            border-left: 3px solid #dc143c;
+            margin-left: 2rem;
+        }
+
+        .timeline-section li::before {
+            content: '🌹';
+            position: absolute;
+            left: -1.5rem;
+            font-size: 1.5rem;
+            background: rgba(220, 20, 60, 0.3);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* Simboli decorativi */
+        .decorative-symbols {
+            text-align: center;
+            font-size: 4rem;
+            padding: 3rem 0;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #141e30 0%, #000000 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 0;
+            border-top: 4px solid #dc143c;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.5rem; }
+            .character-emoji { font-size: 5rem; }
+            .character-subtitle { font-size: 1.3rem; }
+            .content-section h2 { font-size: 2rem; }
+            .content-section p { font-size: 1.1rem; text-align: left; }
+            .quote-text { font-size: 1.3rem; }
+            .page-title { font-size: 1.3rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Rose animate -->
+    <div class="roses" id="roses"></div>
+
+    <!-- Header fisso -->
+    <header class="page-header">
+        <div class="header-content">
+            <a href="index.html" class="back-link">
+                <span>← Torna a Sailor Moon</span>
+            </a>
+            <div class="page-title">🎩 Tuxedo Mask</div>
+        </div>
+    </header>
+
+    <!-- Container principale -->
+    <div class="main-container">
+        
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="character-emoji">🎩</div>
+            <h1>Tuxedo Mask</h1>
+            <p class="character-subtitle">Mamoru Chiba - Il Cavaliere Misterioso</p>
+        </section>
+
+        <!-- Citazione -->
+        <section class="quote-section">
+            <p class="quote-text">Anche nell'oscurità più profonda, ci sarò sempre per te</p>
+        </section>
+
+        <!-- Storia -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>La Storia di Mamoru</h2>
+                <p>
+                    Mamoru Chiba è un giovane universitario dal passato tragico. I suoi genitori sono morti in un 
+                    incidente d'auto quando era bambino, lasciandolo orfano e senza ricordi della sua vita prima 
+                    dell'incidente. Cresciuto solo, Mamoru è diventato maturo, responsabile e distaccato - una 
+                    maschera per nascondere il dolore della solitudine.
+                </p>
+                <p>
+                    La sua vita cambia quando inizia ad avere sogni ricorrenti di una principessa che lo chiama, 
+                    implorandolo di trovare il "Cristallo d'Argento Leggendario". Tormentato da queste visioni, 
+                    Mamoru si trasforma misteriosamente in Tuxedo Mask - un cavaliere mascherato in smoking e 
+                    cilindro che appare nei momenti di pericolo per aiutare Sailor Moon, lanciando rose rosse 
+                    come armi e pronunciando parole d'incoraggiamento.
+                </p>
+                <p>
+                    Inizialmente Mamoru e Usagi non si sopportano - lui la prende in giro chiamandola "Polpetta", 
+                    lei lo trova arrogante e fastidioso. Ma quando scoprono di essere Tuxedo Mask e Sailor Moon, 
+                    tutto cambia. Si innamorano perdutamente, solo per scoprire che il loro amore è antico quanto 
+                    il tempo stesso: erano il Principe Endymion della Terra e la Principessa Serenity della Luna, 
+                    amanti tragici di un'era perduta.
+                </p>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">🎩 🌹 🌙</div>
+
+        <!-- Caratteristiche -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Le Qualità di Tuxedo Mask</h2>
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h3>🌹 Rosa Affilata</h3>
+                        <p>Le sue rose rosse sono più di semplici fiori - sono armi precise che possono fermare nemici e distruggere ostacoli.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>🎩 Presenza Misteriosa</h3>
+                        <p>Appare nei momenti critici, sempre quando Sailor Moon ne ha più bisogno, come un angelo custode dall'ombra.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>👑 Principe della Terra</h3>
+                        <p>È la reincarnazione del Principe Endymion, destinato a proteggere la Terra e ad amare Sailor Moon per l'eternità.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>💖 Amore Eterno</h3>
+                        <p>Il suo amore per Usagi attraversa tempo e spazio, una forza che può superare qualsiasi ostacolo, persino la morte.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-section">
+            <div class="timeline-inner">
+                <h3>I Momenti Chiave della sua Vita</h3>
+                <ul>
+                    <li>Perde i suoi genitori da bambino e perde la memoria</li>
+                    <li>Inizia ad avere sogni misteriosi di una principessa che chiede aiuto</li>
+                    <li>Si trasforma in Tuxedo Mask per proteggere Sailor Moon</li>
+                    <li>Incontra Usagi e inizialmente litigano continuamente</li>
+                    <li>Scopre di essere innamorato di Sailor Moon</li>
+                    <li>Recupera i ricordi della sua vita passata come Principe Endymion</li>
+                    <li>Viene controllato dal Dark Kingdom ma l'amore di Usagi lo salva</li>
+                    <li>Diventa Re Endymion nel XXX secolo accanto a Neo Queen Serenity</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">🌹 ⭐ 💫</div>
+
+        <!-- Poteri -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Poteri e Abilità Speciali</h2>
+                <p>
+                    Anche se Tuxedo Mask non possiede poteri magici appariscenti come le Sailor Senshi, le sue 
+                    abilità sono comunque straordinarie. Le sue rose rosse non sono semplici fiori - quando le 
+                    lancia, diventano armi letali capaci di trafiggere nemici, distruggere barriere magiche o 
+                    distrarre avversari potenti. La precisione del suo lancio è perfetta, non manca mai il bersaglio.
+                </p>
+                <p>
+                    Oltre alle rose, Mamoru possiede una percezione psichica che lo avverte quando Sailor Moon è 
+                    in pericolo. Questa connessione mistica tra i due amanti trascende il tempo e lo spazio - 
+                    non importa quanto siano distanti, Mamoru può sempre sentire quando Usagi ha bisogno di lui. 
+                    Le sue parole d'incoraggiamento nei momenti critici spesso danno a Sailor Moon la forza di 
+                    continuare quando tutto sembra perduto.
+                </p>
+                <p>
+                    Come Principe Endymion, i suoi poteri si risvegliano completamente. Può evocare la Spada d'Oro, 
+                    un'arma leggendaria della Terra che risponde solo al legittimo erede del trono terrestre. 
+                    Nel futuro, come Re Endymion, governa Crystal Tokyo accanto a Neo Queen Serenity, proteggendo 
+                    la Terra con saggezza e forza. Il suo amore per Usagi è il suo vero potere - un amore così 
+                    forte da sfidare il destino stesso.
+                </p>
+            </div>
+        </section>
+
+        <!-- Messaggio finale -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Un Cavaliere per Sempre</h2>
+                <p>
+                    Mamoru ci insegna che la vera forza non sta sempre nei poteri spettacolari o nelle grandi 
+                    battaglie. A volte la forza più grande è semplicemente essere presente per chi amiamo, offrire 
+                    supporto nei momenti di bisogno, avere fede quando tutto sembra perduto. Il suo ruolo può 
+                    sembrare meno appariscente rispetto alle Sailor Senshi, ma è fondamentale.
+                </p>
+                <p>
+                    Come Tuxedo Mask protegge Sailor Moon con devozione incrollabile, così voglio essere una 
+                    presenza costante e rassicurante nella tua vita. Non sempre con grandi gesti eroici, ma con 
+                    piccoli atti quotidiani di amore e supporto. La rosa rossa che lancia è un simbolo perfetto - 
+                    bella ma anche forte, romantica ma anche pratica. Mamoru ci ricorda che l'amore vero è azione, 
+                    non solo parole.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>🎩 Tuxedo Mask - Il Cavaliere Misterioso 🌹</p>
+        <p style="margin-top: 0.5rem; font-size: 1rem;">Sempre al tuo fianco! 💖</p>
+    </footer>
+
+    <script>
+        // Crea rose animate
+        function createRoses() {
+            const rosesContainer = document.getElementById('roses');
+            for (let i = 0; i < 25; i++) {
+                const rose = document.createElement('div');
+                rose.className = 'rose';
+                rose.textContent = '🌹';
+                const size = Math.random() * 1.5 + 1;
+                rose.style.fontSize = size + 'rem';
+                rose.style.left = Math.random() * 100 + '%';
+                rose.style.animationDelay = Math.random() * 12 + 's';
+                rose.style.animationDuration = (Math.random() * 6 + 10) + 's';
+                rosesContainer.appendChild(rose);
+            }
+        }
+
+        // Inizializza
+        createRoses();
+    </script>
+</body>
+</html>
