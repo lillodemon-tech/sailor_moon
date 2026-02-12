@@ -1,1 +1,519 @@
 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Sailor Mars - Rei Hino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            background-attachment: fixed;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Fiamme animate nello sfondo */
+        .flames {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .flame {
+            position: absolute;
+            background: linear-gradient(to top, #ff6b6b, #ffa500, transparent);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.6;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { 
+                transform: translateY(0) scaleY(1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(-20px) scaleY(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        /* Header fisso */
+        .page-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 4px solid #ffa500;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 2px solid #ffa500;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* Container principale */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #ffa500;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .character-emoji {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        .hero-section h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 4rem;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .character-subtitle {
+            font-size: 2rem;
+            color: #c92a2a;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Content wrapper */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Citazione */
+        .quote-section {
+            background: linear-gradient(135deg, #ffe4e1 0%, #ffb3ba 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        .quote-section::before {
+            content: '"';
+            font-size: 10rem;
+            color: #ff6b6b;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 2rem;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sezioni contenuto */
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 0;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .content-section:nth-child(even) {
+            background: rgba(245, 245, 245, 0.95);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section h2 {
+            color: #ff6b6b;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, #ff6b6b, #ffa500);
+        }
+
+        .content-section p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Info boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #ffe4e1 0%, #ffb3ba 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #ff6b6b;
+            transition: all 0.3s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        .info-box h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Timeline section */
+        .timeline-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .timeline-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-section h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .timeline-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-section li {
+            color: white;
+            padding: 1.2rem 0;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            border-left: 3px solid #ffa500;
+            margin-left: 2rem;
+        }
+
+        .timeline-section li::before {
+            content: '🔥';
+            position: absolute;
+            left: -1.5rem;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* Simboli decorativi */
+        .decorative-symbols {
+            text-align: center;
+            font-size: 4rem;
+            padding: 3rem 0;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 0;
+            border-top: 4px solid #ffa500;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.5rem; }
+            .character-emoji { font-size: 5rem; }
+            .character-subtitle { font-size: 1.3rem; }
+            .content-section h2 { font-size: 2rem; }
+            .content-section p { font-size: 1.1rem; text-align: left; }
+            .quote-text { font-size: 1.3rem; }
+            .page-title { font-size: 1.3rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fiamme animate -->
+    <div class="flames" id="flames"></div>
+
+    <!-- Header fisso -->
+    <header class="page-header">
+        <div class="header-content">
+            <a href="index.html" class="back-link">
+                <span>← Torna a Sailor Moon</span>
+            </a>
+            <div class="page-title">🔥 Sailor Mars</div>
+        </div>
+    </header>
+
+    <!-- Container principale -->
+    <div class="main-container">
+        
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="character-emoji">🔥</div>
+            <h1>Sailor Mars</h1>
+            <p class="character-subtitle">Rei Hino - La Guerriera del Fuoco e della Passione</p>
+        </section>
+
+        <!-- Citazione -->
+        <section class="quote-section">
+            <p class="quote-text">Il fuoco purifica tutto, anche i cuori più oscuri!</p>
+        </section>
+
+        <!-- Storia -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>La Storia di Rei</h2>
+                <p>
+                    Rei Hino è una sacerdotessa shintoista che vive e lavora presso il tempio Hikawa. Bella, 
+                    elegante e dal carattere forte, Rei ha dovuto crescere in fretta dopo che sua madre è morta 
+                    quando era bambina e suo padre, un politico, l'ha praticamente abbandonata per la sua carriera. 
+                    Questa esperienza l'ha resa indipendente ma anche diffidente verso gli uomini.
+                </p>
+                <p>
+                    Dotata di poteri psichici fin dalla nascita, Rei ha visioni premonitori e può percepire la 
+                    presenza del male. Quando Luna la scopre e le rivela che è Sailor Mars, Rei abbraccia il suo 
+                    destino con determinazione. Con il grido "Mars Power, Make Up!" si trasforma nella guerriera 
+                    del fuoco, capace di controllare e manipolare le fiamme per combattere le forze oscure.
+                </p>
+                <p>
+                    Il rapporto tra Rei e Usagi è inizialmente conflittuale - l'una disciplinata e seria, l'altra 
+                    pigra e piagnucolosa. Le due si scontrano continuamente, ma sotto i battibecchi si cela un 
+                    affetto profondo. Rei spinge Usagi a dare il meglio di sé, mentre Usagi insegna a Rei il valore 
+                    della leggerezza e della spontaneità. Sono come sorelle che litigano ma si vogliono bene.
+                </p>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">🔥 ⛩️ 🔮</div>
+
+        <!-- Caratteristiche -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Le Qualità di Sailor Mars</h2>
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h3>🔥 Potere del Fuoco</h3>
+                        <p>Controlla le fiamme sacre con maestria. Il suo fuoco purificatore brucia il male e protegge gli innocenti.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>🔮 Poteri Psichici</h3>
+                        <p>Ha visioni premonitori e può sentire la presenza del male. I suoi poteri spirituali sono inestimabili per il team.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>⚡ Spirito Combattivo</h3>
+                        <p>Determinata e coraggiosa, non si tira mai indietro davanti al pericolo. La sua passione è la sua forza.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>⛩️ Sacerdotessa Shintoista</h3>
+                        <p>La sua formazione spirituale le dona saggezza e disciplina. È in sintonia con le forze mistiche dell'universo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-section">
+            <div class="timeline-inner">
+                <h3>I Momenti Chiave della sua Vita</h3>
+                <ul>
+                    <li>Cresce al tempio Hikawa dopo essere stata abbandonata dal padre</li>
+                    <li>Sviluppa i suoi poteri psichici e spirituali</li>
+                    <li>Luna la scopre e le rivela che è Sailor Mars</li>
+                    <li>Si unisce a Sailor Moon e Mercury nella lotta contro il Dark Kingdom</li>
+                    <li>Usa i suoi poteri di visione per avvertire il team di pericoli imminenti</li>
+                    <li>Sviluppa attacchi sempre più potenti come "Burning Mandala"</li>
+                    <li>Diventa Super Sailor Mars con il potere del fuoco sacro</li>
+                    <li>Realizza il suo sogno di diventare sacerdotessa capo del tempio</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">🔥 ⭐ 💜</div>
+
+        <!-- Poteri -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Poteri e Attacchi Speciali</h2>
+                <p>
+                    Sailor Mars è la guerriera del fuoco sacro. Il suo primo attacco, "Fire Soul", lancia una 
+                    potente sfera di fuoco contro i nemici. Successivamente sviluppa tecniche più avanzate come 
+                    "Fire Soul Bird", che trasforma le fiamme in un fenice ardente che incenerisce le forze oscure, 
+                    e "Burning Mandala", che crea cerchi di fuoco sacro per intrappolare e purificare i nemici.
+                </p>
+                <p>
+                    Oltre ai poteri offensivi, Rei possiede straordinarie capacità spirituali. Può eseguire rituali 
+                    di purificazione usando gli ofuda (talismani sacri), meditare per avere visioni del futuro, e 
+                    percepire la presenza del male anche quando è mascherata. Queste abilità mistiche la rendono 
+                    una risorsa inestimabile per prevenire le trappole nemiche.
+                </p>
+                <p>
+                    Come Super Sailor Mars, i suoi poteri si intensificano drammaticamente. Il suo attacco "Mars 
+                    Flame Sniper" evoca un arco di fuoco con cui scaglia frecce infuocate che non mancano mai il 
+                    bersaglio. La combinazione di poteri spirituali e controllo del fuoco la rende una delle 
+                    guerriere più complete e temibili del team.
+                </p>
+            </div>
+        </section>
+
+        <!-- Messaggio finale -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Una Guerriera di Passione</h2>
+                <p>
+                    Rei ci insegna che la passione e la determinazione possono superare qualsiasi ostacolo. 
+                    La sua storia ci mostra che è possibile essere forti e indipendenti senza perdere la propria 
+                    femminilità, essere spirituali senza essere deboli, essere diretti senza essere crudeli. 
+                    Le sue "discussioni" con Usagi nascondono un affetto profondo e un rispetto reciproco.
+                </p>
+                <p>
+                    Come Sailor Mars usa il fuoco sacro per purificare il male, così voglio affrontare le sfide 
+                    della vita con la stessa passione e determinazione. Il fuoco rappresenta la trasformazione - 
+                    brucia ciò che è vecchio per far posto al nuovo. Rei ci ricorda che a volte bisogna lasciare 
+                    andare il passato per abbracciare il futuro con coraggio.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>🔥 Sailor Mars - La Guerriera del Fuoco e della Passione ⛩️</p>
+        <p style="margin-top: 0.5rem; font-size: 1rem;">Il fuoco sacro purifica tutto! 🔥</p>
+    </footer>
+
+    <script>
+        // Crea fiamme animate
+        function createFlames() {
+            const flamesContainer = document.getElementById('flames');
+            for (let i = 0; i < 20; i++) {
+                const flame = document.createElement('div');
+                flame.className = 'flame';
+                const size = Math.random() * 40 + 20;
+                flame.style.width = size + 'px';
+                flame.style.height = size * 1.5 + 'px';
+                flame.style.left = Math.random() * 100 + '%';
+                flame.style.bottom = '-50px';
+                flame.style.animationDelay = Math.random() * 3 + 's';
+                flame.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                flamesContainer.appendChild(flame);
+            }
+        }
+
+        // Inizializza
+        createFlames();
+    </script>
+</body>
+</html>
