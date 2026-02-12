@@ -1,1 +1,519 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💧 Sailor Mercury - Ami Mizuno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #a8edea 0%, #4facfe 100%);
+            background-attachment: fixed;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Bolle d'acqua animate nello sfondo */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: rise 15s infinite;
+        }
+
+        @keyframes rise {
+            0% { 
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Header fisso */
+        .page-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 4px solid #00bfff;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 2px solid #ffffff;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* Container principale */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #00bfff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .character-emoji {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-section h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 4rem;
+            color: #4facfe;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .character-subtitle {
+            font-size: 2rem;
+            color: #00bfff;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Content wrapper */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Citazione */
+        .quote-section {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        .quote-section::before {
+            content: '"';
+            font-size: 10rem;
+            color: #4facfe;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 2rem;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sezioni contenuto */
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 0;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .content-section:nth-child(even) {
+            background: rgba(245, 245, 245, 0.95);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section h2 {
+            color: #4facfe;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, #4facfe, #00bfff);
+        }
+
+        .content-section p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Info boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #4facfe;
+            transition: all 0.3s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.4);
+        }
+
+        .info-box h3 {
+            color: #4facfe;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Timeline section */
+        .timeline-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00bfff 100%);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .timeline-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-section h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .timeline-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-section li {
+            color: white;
+            padding: 1.2rem 0;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            border-left: 3px solid #ffffff;
+            margin-left: 2rem;
+        }
+
+        .timeline-section li::before {
+            content: '💧';
+            position: absolute;
+            left: -1.5rem;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* Simboli decorativi */
+        .decorative-symbols {
+            text-align: center;
+            font-size: 4rem;
+            padding: 3rem 0;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #4facfe 0%, #00bfff 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 0;
+            border-top: 4px solid #ffffff;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.5rem; }
+            .character-emoji { font-size: 5rem; }
+            .character-subtitle { font-size: 1.3rem; }
+            .content-section h2 { font-size: 2rem; }
+            .content-section p { font-size: 1.1rem; text-align: left; }
+            .quote-text { font-size: 1.3rem; }
+            .page-title { font-size: 1.3rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bolle animate -->
+    <div class="bubbles" id="bubbles"></div>
+
+    <!-- Header fisso -->
+    <header class="page-header">
+        <div class="header-content">
+            <a href="index.html" class="back-link">
+                <span>← Torna a Sailor Moon</span>
+            </a>
+            <div class="page-title">💧 Sailor Mercury</div>
+        </div>
+    </header>
+
+    <!-- Container principale -->
+    <div class="main-container">
+        
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="character-emoji">💧</div>
+            <h1>Sailor Mercury</h1>
+            <p class="character-subtitle">Ami Mizuno - La Guerriera dell'Acqua e della Saggezza</p>
+        </section>
+
+        <!-- Citazione -->
+        <section class="quote-section">
+            <p class="quote-text">Il mio cervello è la mia arma migliore!</p>
+        </section>
+
+        <!-- Storia -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>La Storia di Ami</h2>
+                <p>
+                    Ami Mizuno è una studentessa modello con un QI straordinario. Timida e riservata, preferisce 
+                    la compagnia dei libri a quella delle persone. La sua intelligenza eccezionale la rende spesso 
+                    oggetto di invidia e incomprensione da parte dei compagni, lasciandola isolata. Ma tutto cambia 
+                    quando Usagi le offre la sua amicizia sincera.
+                </p>
+                <p>
+                    Quando Luna scopre che Ami è una Sailor Senshi, le dona il potere di trasformarsi in Sailor Mercury. 
+                    Inizialmente incerta, Ami scopre che la sua intelligenza e la sua capacità analitica sono risorse 
+                    preziose nella lotta contro il male. Con il grido "Mercury Power, Make Up!" diventa la guerriera 
+                    dell'acqua, capace di controllare nebbia, ghiaccio e bolle d'acqua.
+                </p>
+                <p>
+                    Ami è la stratega del gruppo. Mentre le altre Senshi si lanciano in battaglia, lei analizza la 
+                    situazione con il suo computer palmare, individua i punti deboli del nemico e formula piani 
+                    d'attacco. La sua calma e razionalità bilanciano l'impulsività di Usagi e la passionalità delle 
+                    altre guerriere. Ma sotto la sua facciata fredda batte un cuore gentile e leale.
+                </p>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">💧 📚 ❄️</div>
+
+        <!-- Caratteristiche -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Le Qualità di Sailor Mercury</h2>
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h3>🧠 Genio Intellettuale</h3>
+                        <p>Con un QI di 300, Ami è la mente più brillante del gruppo. La sua intelligenza è la chiave per risolvere i misteri più complessi.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>💧 Potere dell'Acqua</h3>
+                        <p>Controlla acqua, ghiaccio e nebbia. I suoi attacchi non sono i più potenti, ma la sua precisione è insuperabile.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>📊 Strategia Tattica</h3>
+                        <p>Analizza ogni situazione con il suo computer, fornendo dati cruciali che spesso fanno la differenza tra vittoria e sconfitta.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>🤝 Amica Fedele</h3>
+                        <p>Nonostante la sua natura riservata, è incredibilmente leale. Una volta conquistata la sua fiducia, è un'amica per sempre.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-section">
+            <div class="timeline-inner">
+                <h3>I Momenti Chiave della sua Vita</h3>
+                <ul>
+                    <li>Incontra Usagi che le offre la sua amicizia sincera</li>
+                    <li>Luna le rivela che è Sailor Mercury e le dona il potere di trasformazione</li>
+                    <li>Accetta di combattere insieme a Sailor Moon contro il Dark Kingdom</li>
+                    <li>Si unisce alle altre Senshi formando un team affiatato</li>
+                    <li>Sviluppa il suo computer palmare per analizzare i nemici</li>
+                    <li>Scopre nuovi attacchi come "Shine Aqua Illusion"</li>
+                    <li>Diventa Super Sailor Mercury con poteri potenziati</li>
+                    <li>Continua i suoi studi diventando medico nel futuro</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">💧 ⭐ 📖</div>
+
+        <!-- Poteri -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Poteri e Attacchi Speciali</h2>
+                <p>
+                    Sailor Mercury è la guerriera dell'acqua e del ghiaccio. Il suo primo attacco, "Shabon Spray", 
+                    crea una nebbia densa che confonde i nemici e nasconde le Senshi, permettendo manovre tattiche. 
+                    Successivamente sviluppa "Shine Aqua Illusion", un potente getto d'acqua che purifica e 
+                    distrugge le forze oscure.
+                </p>
+                <p>
+                    Il suo strumento più prezioso è il computer palmare Mercury, capace di scansionare i nemici, 
+                    analizzare i loro poteri, individuare punti deboli e calcolare le probabilità di successo delle 
+                    varie strategie. Questo dispositivo tecnologico avanzato è spesso la chiave per sconfiggere 
+                    nemici apparentemente invincibili.
+                </p>
+                <p>
+                    Come Super Sailor Mercury, i suoi poteri si amplificano enormemente. Acquisisce attacchi come 
+                    "Mercury Aqua Rhapsody" che combina la bellezza dell'acqua con la potenza distruttiva del ghiaccio. 
+                    La sua evoluzione riflette non solo la crescita dei suoi poteri, ma anche la sua maturazione 
+                    personale e la sua accettazione dell'importanza dell'amicizia.
+                </p>
+            </div>
+        </section>
+
+        <!-- Messaggio finale -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Una Guerriera di Saggezza</h2>
+                <p>
+                    Ami ci insegna che l'intelligenza e la conoscenza sono armi potenti quanto qualsiasi potere 
+                    magico. La sua storia ci mostra che essere diversi, essere "secchioni" o introversi, non è 
+                    una debolezza ma una forza unica. L'amicizia vera accetta e valorizza queste differenze.
+                </p>
+                <p>
+                    Come Sailor Mercury usa la sua mente brillante per proteggere i suoi amici, così voglio 
+                    affrontare le sfide della vita con saggezza e razionalità, ma senza mai dimenticare l'importanza 
+                    del cuore. Ami ci ricorda che la vera forza sta nell'equilibrio tra mente e cuore, tra logica 
+                    ed emozione.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>💧 Sailor Mercury - La Guerriera dell'Acqua e della Saggezza ❄️</p>
+        <p style="margin-top: 0.5rem; font-size: 1rem;">La conoscenza è potere! 📚</p>
+    </footer>
+
+    <script>
+        // Crea bolle animate
+        function createBubbles() {
+            const bubblesContainer = document.getElementById('bubbles');
+            for (let i = 0; i < 30; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 40 + 20;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.animationDelay = Math.random() * 15 + 's';
+                bubble.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+
+        // Inizializza
+        createBubbles();
+    </script>
+</body>
+</html>
