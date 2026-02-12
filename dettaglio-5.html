@@ -1,1 +1,521 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💛 Sailor Venus - Minako Aino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a9e 100%);
+            background-attachment: fixed;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Cuori animati nello sfondo */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff9a9e;
+            opacity: 0.6;
+            animation: float-heart 10s infinite;
+        }
+
+        @keyframes float-heart {
+            0% { 
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateY(-100px) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header fisso */
+        .page-header {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a9e 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 4px solid #ffeb3b;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 2px solid #ffeb3b;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .page-title {
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* Container principale */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #ffeb3b;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .character-emoji {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .hero-section h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 4rem;
+            color: #ffd89b;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .character-subtitle {
+            font-size: 2rem;
+            color: #ff9a9e;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Content wrapper */
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Citazione */
+        .quote-section {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe4e1 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        .quote-section::before {
+            content: '"';
+            font-size: 10rem;
+            color: #ffd89b;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 2rem;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sezioni contenuto */
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 0;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        }
+
+        .content-section:nth-child(even) {
+            background: rgba(245, 245, 245, 0.95);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section h2 {
+            color: #ffd89b;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, #ffd89b, #ff9a9e);
+        }
+
+        .content-section p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Info boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe4e1 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #ffd89b;
+            transition: all 0.3s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 216, 155, 0.4);
+        }
+
+        .info-box h3 {
+            color: #ffd89b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Timeline section */
+        .timeline-section {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a9e 100%);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .timeline-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-section h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .timeline-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-section li {
+            color: white;
+            padding: 1.2rem 0;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            border-left: 3px solid #ffeb3b;
+            margin-left: 2rem;
+        }
+
+        .timeline-section li::before {
+            content: '💛';
+            position: absolute;
+            left: -1.5rem;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* Simboli decorativi */
+        .decorative-symbols {
+            text-align: center;
+            font-size: 4rem;
+            padding: 3rem 0;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a9e 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 0;
+            border-top: 4px solid #ffeb3b;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.5rem; }
+            .character-emoji { font-size: 5rem; }
+            .character-subtitle { font-size: 1.3rem; }
+            .content-section h2 { font-size: 2rem; }
+            .content-section p { font-size: 1.1rem; text-align: left; }
+            .quote-text { font-size: 1.3rem; }
+            .page-title { font-size: 1.3rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cuori animati -->
+    <div class="hearts" id="hearts"></div>
+
+    <!-- Header fisso -->
+    <header class="page-header">
+        <div class="header-content">
+            <a href="index.html" class="back-link">
+                <span>← Torna a Sailor Moon</span>
+            </a>
+            <div class="page-title">💛 Sailor Venus</div>
+        </div>
+    </header>
+
+    <!-- Container principale -->
+    <div class="main-container">
+        
+        <!-- Hero section -->
+        <section class="hero-section">
+            <div class="character-emoji">💛</div>
+            <h1>Sailor Venus</h1>
+            <p class="character-subtitle">Minako Aino - La Guerriera dell'Amore e della Bellezza</p>
+        </section>
+
+        <!-- Citazione -->
+        <section class="quote-section">
+            <p class="quote-text">L'amore e la giustizia trionfano sempre!</p>
+        </section>
+
+        <!-- Storia -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>La Storia di Minako</h2>
+                <p>
+                    Minako Aino è l'ultima delle Sailor Senshi a unirsi al gruppo, ma in realtà è stata la prima 
+                    a risvegliarsi. Prima di diventare Sailor Venus, era Sailor V, una guerriera solitaria che 
+                    combatteva il crimine a Tokyo con l'aiuto del suo gatto bianco Artemis. Le sue avventure come 
+                    Sailor V sono leggendarie tra i fan di supereroi.
+                </p>
+                <p>
+                    Minako è esuberante, energica e incredibilmente carismatica. Sogna di diventare una idol e 
+                    adora essere al centro dell'attenzione. È vanitosa e a volte superficiale, ma sotto quella 
+                    facciata da "ragazza popolare" si nasconde una guerriera esperta e una leader naturale. 
+                    Quando si rivela essere Sailor Venus, tutti capiscono che era lei la vera leader delle 
+                    Sailor Senshi sin dall'inizio.
+                </p>
+                <p>
+                    La somiglianza fisica tra Minako e Usagi non è casuale - inizialmente Minako si finge la 
+                    Principessa Serenity per proteggere la vera identità di Usagi. Questo sacrificio dimostra 
+                    la sua dedizione al dovere. Come Sailor Venus, è la guerriera dell'amore, capace di usare 
+                    il potere dell'amore romantico e dell'amicizia come arma contro il male. Il suo attacco 
+                    iconico, la "Catena d'Amore di Venere", riflette perfettamente il suo potere.
+                </p>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">💛 ⭐ 💖</div>
+
+        <!-- Caratteristiche -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Le Qualità di Sailor Venus</h2>
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h3>💖 Potere dell'Amore</h3>
+                        <p>Usa il potere dell'amore come arma. La sua Catena d'Amore può intrappolare e purificare qualsiasi nemico.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>⭐ Leader Nata</h3>
+                        <p>È la vera leader delle Sailor Senshi Inner. La sua esperienza come Sailor V la rende una guerriera esperta.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>✨ Carisma Stellare</h3>
+                        <p>Il suo fascino e la sua energia contagiosa ispirano tutti intorno a lei. È impossibile non amarla.</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>🎭 Spirito da Idol</h3>
+                        <p>Sogna di diventare una star. La sua passione per lo spettacolo la rende brillante e vivace.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-section">
+            <div class="timeline-inner">
+                <h3>I Momenti Chiave della sua Vita</h3>
+                <ul>
+                    <li>Si risveglia come prima Sailor Senshi e diventa Sailor V</li>
+                    <li>Combatte da sola contro il crimine con l'aiuto di Artemis</li>
+                    <li>Diventa una leggenda metropolitana a Tokyo come "Sailor V"</li>
+                    <li>Si rivela essere Sailor Venus e si unisce alle altre Senshi</li>
+                    <li>Si finge la Principessa Serenity per proteggere Usagi</li>
+                    <li>Assume il ruolo di leader delle Inner Senshi</li>
+                    <li>Sviluppa il potente attacco "Venus Love-Me Chain"</li>
+                    <li>Diventa Super Sailor Venus con poteri dell'amore amplificati</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="decorative-symbols">💛 🌟 💫</div>
+
+        <!-- Poteri -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Poteri e Attacchi Speciali</h2>
+                <p>
+                    Sailor Venus è la guerriera dell'amore e della bellezza. Il suo attacco più famoso, "Venus 
+                    Love-Me Chain", evoca una catena d'oro a forma di cuori che può intrappolare i nemici, 
+                    neutralizzare i loro poteri o addirittura purificare il male dai loro cuori. Questa catena 
+                    rappresenta il potere dell'amore che lega e protegge.
+                </p>
+                <p>
+                    Un altro attacco devastante è "Crescent Beam", un raggio di luce dorata che spara dal suo 
+                    dito indice. Questo attacco è veloce, preciso e incredibilmente potente. Come Sailor V, 
+                    usava anche il "Crescent Beam Shower", una versione potenziata che crea multiple scariche 
+                    di energia luminosa che colpiscono i nemici da ogni direzione.
+                </p>
+                <p>
+                    Come Super Sailor Venus, i suoi poteri evolvono ulteriormente. Il suo attacco "Venus Love 
+                    and Beauty Shock" combina bellezza e potenza distruttiva, creando un'onda d'urto dorata che 
+                    purifica tutto ciò che tocca. La sua evoluzione riflette la sua maturazione: non più solo 
+                    vanità superficiale, ma vera bellezza interiore che si manifesta come potere puro.
+                </p>
+            </div>
+        </section>
+
+        <!-- Messaggio finale -->
+        <section class="content-section">
+            <div class="section-inner">
+                <h2>Una Guerriera di Bellezza</h2>
+                <p>
+                    Minako ci insegna che l'amore e la bellezza non sono segni di debolezza, ma fonti di grande 
+                    potere. La sua storia ci mostra che possiamo essere glamour e forti, vanitosi e coraggiosi, 
+                    sognatori e leader. Non dobbiamo scegliere tra essere belli fuori e forti dentro - possiamo 
+                    essere entrambi.
+                </p>
+                <p>
+                    Come Sailor Venus usa l'amore come arma più potente, così voglio affrontare il mondo con 
+                    cuore aperto e spirito luminoso. L'amore non è solo romanticismo - è la forza che ci spinge 
+                    a proteggere chi amiamo, a combattere per ciò che è giusto, a brillare anche nell'oscurità. 
+                    Minako ci ricorda che essere una star significa illuminare la vita degli altri.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>💛 Sailor Venus - La Guerriera dell'Amore e della Bellezza ✨</p>
+        <p style="margin-top: 0.5rem; font-size: 1rem;">L'amore conquista tutto! 💖</p>
+    </footer>
+
+    <script>
+        // Crea cuori animati
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '💖';
+                const size = Math.random() * 2 + 1;
+                heart.style.fontSize = size + 'rem';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Inizializza
+        createHearts();
+    </script>
+</body>
+</html>
